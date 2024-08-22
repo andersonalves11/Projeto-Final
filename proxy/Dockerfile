@@ -1,12 +1,13 @@
-# Use uma imagem base adequada
 FROM nginx:latest
 
-# Copie o certificado e a chave para o container
-COPY ./certificados/certificado.crt /etc/nginx/ssl/certificado.crt
-COPY ./certificados/certificado.key /etc/nginx/ssl/certificado.key
+COPY ./conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-# Copie o arquivo de configuração do Nginx para o container
-COPY ./nginx.conf /etc/nginx/nginx.conf
+RUN mkdir /etc/nginx/ssl
 
-# Exponha a porta 443 para HTTPS
-EXPOSE 443
+COPY cert.crt /etc/nginx/ssl
+
+COPY cert.key /etc/nginx/ssl
+
+RUN chown -R root:root /etc/nginx/ssl
+
+RUN chmod -R 600 /etc/nginx/ssl
