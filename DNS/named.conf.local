@@ -4,7 +4,7 @@ directory "/var/cache/bind";
 allow-query { any; };	
 };
 
-zone "anderson.asa.br" {
+zone "ifrn.asa.br" {
 	type master;
 	file "/etc/bind/ifrn.asa.br";	
 	allow-transfer { any; };
