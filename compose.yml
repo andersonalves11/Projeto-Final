@@ -22,7 +22,8 @@ services:
     image: proxy
     container_name: proxy
     ports:
-      - "80:80"
+      - "80:80/tcp"
+      - "443:443/tcp"
     depends_on:
       - web01
       - web02
